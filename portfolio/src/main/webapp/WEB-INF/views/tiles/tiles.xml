@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC  "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"  "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+   <!-- base-definition -->
+   <definition name="default-layout" template="/WEB-INF/views/tiles/default-layout.jsp">
+   		<put-attribute name="title"     value="" />
+      	<put-attribute name="header"    value="/WEB-INF/views/tiles/default-header.jsp" />
+		<put-attribute name="sidemenu"   value=""/>
+		<put-attribute name="contents"  value="" />
+		<put-attribute name="footer"    value="/WEB-INF/views/tiles/default-footer.jsp" />
+   </definition>
+   
+   <definition name="*" extends="default-layout">
+   		<put-attribute name="title"     value="" />
+   		<put-attribute name="sidemenu"  value="/WEB-INF/views/tiles/default-sidemenu.jsp"/>
+		<put-attribute name="contents"  value="/WEB-INF/views/{1}.jsp" />
+   </definition>
+   
+  <!--  <definition name="rtslist" template="/WEB-INF/views/tiles/rtslist-layout.jsp">
+   		<put-attribute name="title"    value="실시간 검색어 리스트"/>
+   		<put-attribute name="header"   value="/WEB-INF/views/tiles/default-header.jsp" />
+   		<put-attribute name="left"     value="/WEB-INF/views/main_list/rtslist.jsp"/>
+   		<put-attribute name="left"     value="/WEB-INF/views/left_rtsview.jsp"/>
+   		<put-attribute name="right"    value="/WEB-INF/views/right_rtsview.jsp"/>
+   		<put-attribute name="side"     value="/WEB-INF/views/sidelist.jsp"/>
+   		<put-attribute name="footer"   value="/WEB-INF/views/tiles/default-footer.jsp" />
+   </definition> -->
+   
+   <definition name="login" template="/WEB-INF/views/login.jsp"/>
+
+</tiles-definitions>

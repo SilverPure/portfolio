@@ -1,0 +1,199 @@
+@charset "UTF-8";
+/*메인 페이지*/
+
+/*로그인*/ 
+body#LoginForm{ 
+background-image:url('../images/login_bg.jpg'); 
+background-repeat:no-repeat; 
+background-position:center; 
+background-size:cover; 
+padding:10px;
+}
+
+.form-heading { color:#fff; font-size:23px;}
+.panel h2{ color:#444444; font-size:18px; margin:0 0 8px 0;}
+.panel p { color:#777777; font-size:14px; margin-bottom:30px; line-height:24px;}
+.login-form .form-control {
+  background: #f7f7f7 none repeat scroll 0 0;
+  border: 1px solid #d4d4d4;
+  border-radius: 4px;
+  font-size: 14px;
+  height: 50px;
+  line-height: 50px;
+}
+.main-div {
+  background: #ffffff none repeat scroll 0 0;
+  border-radius: 2px;
+  margin: 10px auto 30px;
+  max-width: 38%;
+  padding: 50px 70px 70px 71px;
+}
+
+.login-form .form-group {
+  margin-bottom:10px;
+}
+.login-form{ text-align:center;}
+.forgot a {
+  color: #777777;
+  font-size: 14px;
+  text-decoration: underline;
+}
+.login-form  .btn.btn-primary {
+  background: #f0ad4e none repeat scroll 0 0;
+  border-color: #f0ad4e;
+  color: #ffffff;
+  font-size: 14px;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  padding: 0;
+}
+.forgot {
+  text-align: left; margin-bottom:30px;
+}
+.botto-text {
+  color: #ffffff;
+  font-size: 14px;
+  margin: auto;
+}
+.login-form .btn.btn-primary.reset {
+  background: #ff9900 none repeat scroll 0 0;
+}
+.back { text-align: left; margin-top:10px;}
+.back a {color: #444444; font-size: 13px;text-decoration: none;}
+
+//로그인 끝
+/*레이아웃 */
+#header {
+	background-color: #ffffff;
+}
+
+#sidemenu {
+	width: 200px;
+	float: left;
+	min-height: 400px;
+}
+
+#siteContent {
+	margin:20px,20px;
+	padding: 10px;
+}
+
+#footer {
+	clear:both;
+	height: 30px;
+}
+.footer-stats{
+	text-align: center;
+}
+/* 사이드 메뉴 */
+.s_nav { background-color: #f8f8f8;
+    height: 700px;
+    margin: 1px;
+	padding: 10px 15px;}
+
+.s_nav ul {list-style: none; }
+
+.s_nav>ul>li {/*border: 1px solid;*/
+ width: 120px;
+ padding: 12px 3px;
+ text-align: center;
+ line-height: 40px; }
+
+.s_nav>ul>li>ul {display: none; /*서브메뉴는 사라지게 */}
+.s_nav>ul>li:HOVER>ul {display: block;
+  /*주메뉴에 오버시 서브메뉴 나타남  */
+  border-top: 2px outset; 
+  margin: 0; 
+  padding-left: 0 /*서브메뉴가 우측으로 들어간 것을 없앰*/;  }
+
+.s_nav>ul>li:HOVER>a {color: #47b /* 주메뉴에 오버시 글자색상 */;}
+.s_nav>ul ul a:HOVER {color: #74b /* 서브메뉴에 오버시 글자색상 */;}
+
+.s_nav a {
+  text-decoration: none;/*모든 링크 밑줄 없앰*/
+  font-size: 1.3em;
+  /*text-transform : uppercase /* 전체를 대문자로 */;*/
+  font-weight: bold;
+  color: #999; }
+
+.s_nav>ul ul a {/*border:1px solid;*/ 
+	width: 120px ;   height: 40px;/* 크기 적용 안됨 */
+	display: block;/*a태그는 인라인요소이므로 크기를 적용 할 수 없어서 블럭요소로 바꿔줌*/
+}
+/**/
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  margin-top: 7px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.card_c {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+}
+._site{
+	border:1px solid red;
+	display: inline-block;
+}

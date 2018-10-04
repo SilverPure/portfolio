@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="processlogic">
+     
+     <select id="selectDetail" parameterType="hashmap" resultType="hashmap">
+     		SELECT *
+     		FROM portfolio.mother_table
+     		ORDER BY rank ASC, site_code DESC, inst_date DESC
+     </select>
+     <select id="selectRTSBoard" parameterType="hashmap" resultType="hashmap">
+     		SELECT A.*
+			FROM portfolio.mother_table A,(SELECT stand_time
+										   FROM portfolio.real_time_table
+										   ORDER BY inst_date DESC LIMIT 1
+										  ) B
+			WHERE A.stand_time=B.stand_time
+     </select>
+     
+     <insert id="insertRealTime" parameterType="hashmap">
+       		
+			INSERT INTO portfolio.real_time_table
+			(         
+			     site_code
+				,rank
+				,keyword
+				,stand_time
+				,inst_id
+				,inst_date
+	        ) VALUES (
+        		 #{site_code}
+	        	,#{rank}
+        		,#{keyword}
+        		,#{stand_time}
+        		,#{inst_id}
+				,NOW() 
+			)
+     </insert>
+     <insert id="insertRow" parameterType="hashmap">
+       		
+			INSERT INTO portfolio.mother_table
+			(         
+			      row_code 
+	        	 ,title 
+	        	 ,content 
+	        	 ,press 
+	        	 ,url 
+	        	 ,rank 
+	        	 ,site_code 
+	        	 ,depth 
+	        	 ,inst_id
+	        	 ,user_code
+	        	 ,inst_date
+	        	 ,stand_time
+	        	 ,headline
+	        ) VALUES (
+        		 #{row_code}
+	        	,#{title}
+        		,#{content}
+        		,#{press}
+        		,#{url}
+        		,#{rank}
+        		,#{site_code}
+        		,#{depth}
+        		,#{inst_id}
+        		,#{user_code}
+				,NOW()
+				,#{stand_time}
+				,#{headline} 
+			)
+     </insert>
+     <select id="selectKeyword"  parameterType="hashmap" resultType="hashmap">
+	 		
+	 		SELECT A.rank
+				  ,A.site_code
+			      ,A.stand_time
+			      ,A.keyword
+			      ,CONCAT('RTS',TO_BASE64(CONCAT(DATE_FORMAT(A.inst_date,'%Y%m%d'),DATE_FORMAT(A.stand_time,'%H%i%s'),A.site_code,A.rank))) AS row_code
+			FROM portfolio.real_time_table A,(SELECT stand_time
+											  FROM portfolio.real_time_table
+											  ORDER BY inst_date DESC LIMIT 1
+											 ) B
+			WHERE 1=1
+			AND A.stand_time=B.stand_time
+			<if test="site_code != null">
+				AND site_code=#{site_code}
+			</if>
+			ORDER BY idx, rank ASC
+     
+     </select>
+     
+</mapper>

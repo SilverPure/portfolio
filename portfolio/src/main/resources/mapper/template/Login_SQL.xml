@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="loginProc">
+     
+     <select id="checkId" parameterType="map" resultType="map">
+     		SELECT COALESCE(count(inst_id),0) AS count
+			FROM portfolio.user_info
+			WHERE 1=1 
+			<if test='email != null and email != ""'>
+				AND user_mail=#{email}
+				AND kakao_user='N'
+			</if>
+			<if test='kakao_id != null and kakao_id !=""'>
+				AND kakao_id=#{kakao_id}
+				AND kakao_user='Y' 
+			</if>
+     </select>
+     
+     <insert id="userInst" parameterType="hashmap">
+	     	INSERT INTO portfolio.user_info 
+		     	(
+		     		<choose>
+		     			<when test='email != null and email !=""'>
+						 	user_id
+		  			       ,user_name
+						   ,user_mail
+						   ,user_addr
+						   ,inst_id
+						   ,post
+						   ,road_addr
+						   ,jubun_addr 
+						   ,user_pass
+		     			</when>
+		     			<when test='kakao_id != null and kakao_id !=""'>
+							kakao_id 
+						   ,kakao_nick_name 
+						   ,kakao_profile_img
+						   ,inst_id
+						   ,kakao_user 
+		     			</when>
+		     		</choose>
+						   ,inst_date 
+			 	) VALUES (
+					<choose>
+		     			<when test='email != null and email !=""'>
+						 	#{email}
+		  			       ,#{user_name}
+						   ,#{email}
+						   ,#{user_addr}
+						   ,#{email}
+						   ,#{_post}
+						   ,#{_addr1}
+						   ,#{_addr2}
+						   ,#{pass}
+		     			</when>
+		     			<when test='kakao_id != null and kakao_id !=""'>
+							#{kakao_id} 
+						   ,#{kakao_nick_name} 
+						   ,#{kakao_pimg}
+						   ,#{kakao_id}
+						   ,'Y'
+		     			</when>
+		     		</choose>
+		     			   ,NOW()
+				)
+     </insert>
+     
+     <select id="userSel" parameterType="map" resultType="Map">
+     	SELECT *
+     	FROM portfolio.user_info
+     	WHERE 1=1
+     	<choose>
+     		<when test='email != null and email !=""'>
+     			AND user_mail=#{email}
+     			AND kakao_user='N'
+     		</when>
+     		<when test='kakao_id != null and kakao_id !=""'>
+     			AND kakao_id=#{kakao_id}
+     			AND kakao_user='Y'
+     		</when>
+     	</choose>
+     </select>
+</mapper>
