@@ -125,7 +125,6 @@ public class ProcessUtil {
 	          			cutUrl = _url.substring(_url.indexOf(".")+1);
 	          			_press =  cutUrl.substring(0,cutUrl.indexOf("."));
 	          		}
-	          		//같은 사이트 주소이면 예외 처리 함
 	          		
 	          		//구글 사이트에서 케쉬 정보가 조회 되어서  예외 처리 
 	          		if("google".equals(_press)) {

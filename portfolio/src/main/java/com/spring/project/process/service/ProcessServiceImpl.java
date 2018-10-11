@@ -166,16 +166,16 @@ public class ProcessServiceImpl implements ProcessService {
 	        
  			//네이버 실시간 검색어
 	        List<Map<String, Object>> getRTSN = processDAO.selectRTSTable(map);
-	        logger.info("getRTSN===> "+getRTSN.toString());
+	        //logger.info("getRTSN===> "+getRTSN.toString());
 	        //네이버 실시간 검색어 리스트
 	        for(int i=0;i<getRTSN.size();i++) {
 	        	HashMap<String, Object> getRow =  (HashMap<String, Object>) getRTSN.get(i);
-	        	logger.info("getRow========> "+getRow.toString());
+	        	//logger.info("getRow========> "+getRow.toString());
 	        	//사이트 코드가 nav일 경우
 	        	if("nav".equals(getRow.get("site_code"))){
 	        		//구글 검색
         			rtsResult=ProcessUtil.GoogleLogicProcess(getRow,conn_url_goo,user_agent);
-        			logger.info("rtsResult========> "+rtsResult.toString());
+        			//logger.info("rtsResult========> "+rtsResult.toString());
 	        		for(int x=0;x<rtsResult.size();x++) {
 	        			HashMap<String, Object> rsRow=(HashMap<String, Object>) rtsResult.get(x);
 	        			HashMap<String, Object> instRow = new HashMap<>();
