@@ -21,7 +21,7 @@
         class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
         <property name="url"
-            value="jdbc:mysql://127.0.0.1:3306/edu?useSSL=false&amp;serverTimezone=UTC">
+            value="jdbc:mysql://127.0.0.1:3306/portfolio?useSSL=false&amp;serverTimezone=UTC">
         </property>
         <property name="username" value="devuser"></property>
         <property name="password" value="devuser"></property>
