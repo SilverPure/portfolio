@@ -1538,6 +1538,7 @@ pre code {
 
 .table .table {
   background-color: #fff;
+  
 }
 
 .table-sm th,
@@ -1551,7 +1552,8 @@ pre code {
 
 .table-bordered th,
 .table-bordered td {
-  border: 1px solid #dee2e6;
+  /* border: 1px solid #dee2e6; */
+  border: 1px solid #495057;
 }
 
 .table-bordered thead th,
@@ -1639,7 +1641,17 @@ pre code {
 .table-warning > td {
   background-color: #ffeeba;
 }
-
+/*테이블 로우 바탕 이미지 커스텀*/
+.table-custom1,
+.table-custom1 > th,
+.table-custom1 > td {
+  background-color: #c67911;
+}
+.table-custom2,
+.table-custom2 > th,
+.table-custom2 > td {
+  background-color: #edb347;
+}
 .table-hover .table-warning:hover {
   background-color: #ffe8a1;
 }
@@ -1798,7 +1810,7 @@ pre code {
 
 .table-responsive {
   display: block;
-  width: 100% 
+  width: 100%; 
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: -ms-autohiding-scrollbar;
