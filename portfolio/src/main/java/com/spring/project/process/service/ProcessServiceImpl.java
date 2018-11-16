@@ -117,13 +117,18 @@ public class ProcessServiceImpl implements ProcessService {
                   .ignoreContentType(true);
 	        doc = conn.get();
 	        
-	        getRank = doc.getElementsByClass("keyword_rank select_date");
+	        //getRank = doc.getElementsByClass("keyword_rank select_date");
+	        //getRank = doc.getElementsByClass("rank_inner");
+	        getRank = doc.getElementsByAttributeValue("data-age","all");
+	        //logger.info("getRank=======>"+getRank);
 	        //기준 시간 가져 오기
-	        String getTime = getRank.select("strong").text();
+	        //String getTime = getRank.select("strong").text();
+	        bTime = doc.getElementsByClass("time_txt _title_hms").text();
+	        //logger.info("getTime=======>"+bTime);
 	        //절삭 되는 index값 구하기
-	        int cutidx=getTime.indexOf(")");
+	        //int cutidx=getTime.indexOf(")");
 	        //시간 값 구하기 
-	        bTime = getTime.substring(cutidx).replace("기준", "").replace(")", "");
+	        //bTime = getTime.substring(cutidx).replace("기준", "").replace(")", "");
 	        //랭크 리스트의 내용의 태그와 속성을 지정
 	        rowStr = getRank.select("li.list");
 	        //해당 row의 size만큼 돌면서  태그의 value값을 map에 put
@@ -167,7 +172,7 @@ public class ProcessServiceImpl implements ProcessService {
  			//네이버 실시간 검색어
 	        List<Map<String, Object>> getRTSN = processDAO.selectRTSTable(map);
 	        //logger.info("getRTSN===> "+getRTSN.toString());
-	        //네이버 실시간 검색어 리스트
+	        //급상승  검색어 리스트
 	        for(int i=0;i<getRTSN.size();i++) {
 	        	HashMap<String, Object> getRow =  (HashMap<String, Object>) getRTSN.get(i);
 	        	//logger.info("getRow========> "+getRow.toString());

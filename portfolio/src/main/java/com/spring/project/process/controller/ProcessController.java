@@ -83,9 +83,9 @@ public class ProcessController {
 		
 		JSONArray jlist=new JSONArray(list.toArray());
 		
-		/*mv.addObject("rtsn",rtsn);
+		mv.addObject("rtsn",rtsn);
 		mv.addObject("rtsd",rtsd);
-		mv.addObject("list",jlist);*/
+		mv.addObject("list",jlist);
 		mv.setViewName("rtslist");
 		return mv;
 	}
